@@ -12,8 +12,8 @@ zk_jmx_port="9011"
 
 graphite_host = "graphite.myorg.com"
 graphite_port = "2003"
+graphite_prefix = "zookeeperCluster.jmxmetrics"
 output_dir="output"
-
 
 def generate_zk(node_array):
     for host in node_array:

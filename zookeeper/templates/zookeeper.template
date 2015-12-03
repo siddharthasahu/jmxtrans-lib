@@ -10,7 +10,7 @@
                             "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
                             "settings": {
                                 "port": %(graphite_port)s,
-                                "host": "%(graphite_host)s"
+                                "host": "%(graphite_host)s",
                                 "typeNames" : [ "name" ]
                             }
                         }
@@ -26,7 +26,7 @@
                             "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
                             "settings": {
                                 "port": %(graphite_port)s,
-                                "host": "%(graphite_host)s"
+                                "host": "%(graphite_host)s",
                                 "typeNames" : [ "name" ]
                             }
                         }
@@ -52,7 +52,7 @@
                             "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
                             "settings": {
                                 "port": %(graphite_port)s,
-                                "host": "%(graphite_host)s"
+                                "host": "%(graphite_host)s",
                                 "typeNames" : [ "name" ]
                             }
                         }
@@ -69,7 +69,7 @@
                             "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
                             "settings": {
                                 "port": %(graphite_port)s,
-                                "host": "%(graphite_host)s"
+                                "host": "%(graphite_host)s",
                                 "typeNames" : [ "name" ]
                             }
                         }
