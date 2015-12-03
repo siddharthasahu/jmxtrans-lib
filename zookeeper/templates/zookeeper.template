@@ -10,9 +10,8 @@
                             "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
                             "settings": {
                                 "port": %(graphite_port)s,
-                                "host": "%(graphite_host)s"
-                                "typeNames" : [ "name" ],
-                                "rootPrefix" : "%(graphite_prefix)s"
+                                "host": "%(graphite_host)s",
+                                "typeNames" : [ "name" ]
                             }
                         }
                     ],
@@ -27,9 +26,8 @@
                             "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
                             "settings": {
                                 "port": %(graphite_port)s,
-                                "host": "%(graphite_host)s"
-                                "typeNames" : [ "name" ],
-                                "rootPrefix" : "%(graphite_prefix)s"
+                                "host": "%(graphite_host)s",
+                                "typeNames" : [ "name" ]
                             }
                         }
                     ],
@@ -54,9 +52,8 @@
                             "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
                             "settings": {
                                 "port": %(graphite_port)s,
-                                "host": "%(graphite_host)s"
-                                "typeNames" : [ "name" ],
-                                "rootPrefix" : "%(graphite_prefix)s"
+                                "host": "%(graphite_host)s",
+                                "typeNames" : [ "name" ]
                             }
                         }
                     ],
@@ -72,9 +69,8 @@
                             "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
                             "settings": {
                                 "port": %(graphite_port)s,
-                                "host": "%(graphite_host)s"
-                                "typeNames" : [ "name" ],
-                                "rootPrefix" : "%(graphite_prefix)s"
+                                "host": "%(graphite_host)s",
+                                "typeNames" : [ "name" ]
                             }
                         }
                     ],
@@ -96,8 +92,7 @@
                             "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
                             "settings": {
                                 "port": %(graphite_port)s,
-                                "host": "%(graphite_host)s",
-                                "rootPrefix" : "%(graphite_prefix)s"
+                                "host": "%(graphite_host)s"
                             }
                         }
                     ],
@@ -114,8 +109,7 @@
                             "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
                             "settings": {
                                 "port": %(graphite_port)s,
-                                "host": "%(graphite_host)s",
-                                "rootPrefix" : "%(graphite_prefix)s"
+                                "host": "%(graphite_host)s"
                             }
                         }
                     ],
