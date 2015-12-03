@@ -11,7 +11,8 @@
                             "settings": {
                                 "port": %(graphite_port)s,
                                 "host": "%(graphite_host)s"
-                                "typeNames" : [ "name" ]
+                                "typeNames" : [ "name" ],
+                                "rootPrefix" : "%(graphite_prefix)s"
                             }
                         }
                     ],
@@ -27,7 +28,8 @@
                             "settings": {
                                 "port": %(graphite_port)s,
                                 "host": "%(graphite_host)s"
-                                "typeNames" : [ "name" ]
+                                "typeNames" : [ "name" ],
+                                "rootPrefix" : "%(graphite_prefix)s"
                             }
                         }
                     ],
@@ -53,7 +55,8 @@
                             "settings": {
                                 "port": %(graphite_port)s,
                                 "host": "%(graphite_host)s"
-                                "typeNames" : [ "name" ]
+                                "typeNames" : [ "name" ],
+                                "rootPrefix" : "%(graphite_prefix)s"
                             }
                         }
                     ],
@@ -70,7 +73,8 @@
                             "settings": {
                                 "port": %(graphite_port)s,
                                 "host": "%(graphite_host)s"
-                                "typeNames" : [ "name" ]
+                                "typeNames" : [ "name" ],
+                                "rootPrefix" : "%(graphite_prefix)s"
                             }
                         }
                     ],
@@ -92,7 +96,8 @@
                             "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
                             "settings": {
                                 "port": %(graphite_port)s,
-                                "host": "%(graphite_host)s"
+                                "host": "%(graphite_host)s",
+                                "rootPrefix" : "%(graphite_prefix)s"
                             }
                         }
                     ],
@@ -109,7 +114,8 @@
                             "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
                             "settings": {
                                 "port": %(graphite_port)s,
-                                "host": "%(graphite_host)s"
+                                "host": "%(graphite_host)s",
+                                "rootPrefix" : "%(graphite_prefix)s"
                             }
                         }
                     ],
