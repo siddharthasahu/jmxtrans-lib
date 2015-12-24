@@ -17,32 +17,9 @@
                         }
                     ],
                     "obj": "org.apache.ZooKeeperService:name0=ReplicatedServer_id*",
+                    "resultAlias": "Quorum",
                     "attr": [
                         "QuorumSize"
-                    ]
-                },
-                {
-                    "outputWriters": [
-                        {
-                            "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
-                            "settings": {
-                                "port": %(graphite_port)s,
-                                "host": "%(graphite_host)s",
-                                "typeNames" : [ "name" ],
-                                "rootPrefix" : "%(graphite_prefix)s"
-                            }
-                        }
-                    ],
-                    "obj": "org.apache.ZooKeeperService:name0=ReplicatedServer_id*",
-                    "attr": [
-                        "ElectionType",
-                        "InitLimit",
-                        "MaxClientCnxnsPerHost",
-                        "MaxSessionTimeout",
-                        "MinSessionTimeout",
-                        "SyncLimit",
-                        "Tick",
-                        "TickTime"
                     ]
                 },
                 {
@@ -89,6 +66,7 @@
                         }
                     ],
                     "obj": "org.apache.ZooKeeperService:name0=ReplicatedServer_id*,name1=replica*,name2=*,name3=InMemoryDataTree",
+                    "resultAlias": "DataTreeBean",
                     "attr": [
                         "NodeCount",
                         "WatchCount"
