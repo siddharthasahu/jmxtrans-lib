@@ -1,8 +1,7 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 
 import os
 import sys
-
 
 prod_zk_cluster = ["zk01.myorg.com", "zk02.myorg.com", "zk03.myorg.com"]
 
@@ -22,10 +21,7 @@ def generate_zk(node_array):
 def generate_host(host, type, template):
     print "generating template for %(type)s: %(host)s" % { 'host': host, 'type': type }
     output_file = open("%(output_dir)s/%(host)s-%(type)s.json" % { "output_dir": output_dir, "host": host, "type": type }, "w")
-    output_file.write(template % { "port" : zk_jmx_port , "host" : host, "graphite_host": graphite_host, "graphite_port": graphite_port  })
+    output_file.write(template % { "port" : zk_jmx_port , "host" : host, "graphite_host": graphite_host, "graphite_port": graphite_port, "graphite_prefix": graphite_prefix })
     output_file.close()
 
 generate_zk(prod_zk_cluster)
-
-
-
