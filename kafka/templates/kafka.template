@@ -10,27 +10,15 @@
                             "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
                             "settings": {
                                 "port": %(graphite_port)s,
-                                "host": "%(graphite_host)s"
+                                "host": "%(graphite_host)s",
+                                "rootPrefix" : "%(graphite_prefix)s"
                             }
                         }
                     ],
-                    "obj": "kafka:type=kafka.SocketServerStats",
-                    "resultAlias": "SocketServerStats",
+                    "obj": "kafka.cluster:name=UnderReplicated,partition=*,topic=*,type=Partition",
+                    "resultAlias": "UnderReplicatedPartitions",
                     "attr": [
-                        "ProduceRequestsPerSecond",
-                        "FetchRequestsPerSecond",
-                        "TotalProduceRequestMs",
-                        "TotalFetchRequestMs",
-                        "TotalBytesWritten",
-                        "TotalBytesRead",
-                        "NumProduceRequests",
-                        "NumFetchRequests",
-                        "BytesWrittenPerSecond",
-                        "BytesReadPerSecond",
-                        "MaxFetchRequestMs",
-                        "AvgFetchRequestMs",
-                        "MaxProduceRequestMs",
-                        "AvgProduceRequestMs"
+                        "Value"
                     ]
                 },
                 {
@@ -39,7 +27,8 @@
                             "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
                             "settings": {
                                 "port": %(graphite_port)s,
-                                "host": "%(graphite_host)s"
+                                "host": "%(graphite_host)s",
+                                "rootPrefix" : "%(graphite_prefix)s"
                             }
                         }
                     ],
@@ -52,9 +41,30 @@
                         "AvgFlushMs",
                         "NumFlushes"
                     ]
+                },
+                {
+                    "outputWriters": [
+                        {
+                            "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
+                            "settings": {
+                                "port": %(graphite_port)s,
+                                "host": "%(graphite_host)s",
+                                "rootPrefix" : "%(graphite_prefix)s"
+                            }
+                        }
+                    ],
+                    "obj": "kafka.utils:name=cleaner-io,type=Throttler",
+                    "resultAlias": "Throttler",
+                    "attr": [
+                        "Count",
+                        "FifteenMinuteRate",
+                        "FiveMinuteRate",
+                        "MeanRate",
+                        "OneMinuteRate"
+                    ]
                 }
             ],
-            "numQueryThreads": 2
+            "numQueryThreads": 3
         }
     ]
 }
