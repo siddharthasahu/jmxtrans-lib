@@ -3,6 +3,7 @@
         {
             "port": %(port)s,
             "host": "%(host)s",
+            "alias": "%(server_alias)s",
             "queries": [
                 {
                     "outputWriters": [
@@ -11,24 +12,6 @@
                             "settings": {
                                 "port": %(graphite_port)s,
                                 "host": "%(graphite_host)s",
-                                "typeNames" : [ "name" ],
-                                "rootPrefix" : "%(graphite_prefix)s"
-                            }
-                        }
-                    ],
-                    "obj" : "java.lang:type=OperatingSystem",
-                    "attr" : [
-                        "OpenFileDescriptorCount", "MaxFileDescriptorCount"
-                    ]
-                },
-                {
-                    "outputWriters": [
-                        {
-                            "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
-                            "settings": {
-                                "port": %(graphite_port)s,
-                                "host": "%(graphite_host)s",
-                                "typeNames" : [ "name" ],
                                 "rootPrefix" : "%(graphite_prefix)s"
                             }
                         }
@@ -44,14 +27,63 @@
                             "settings": {
                                 "port": %(graphite_port)s,
                                 "host": "%(graphite_host)s",
-                                "typeNames" : [ "name" ],
                                 "rootPrefix" : "%(graphite_prefix)s"
                             }
                         }
                     ],
-                    "obj" : "java.lang:name=CMS Old Gen,type=MemoryPool",
-                    "resultAlias": "cmsoldgen",
-                    "attr" : [ "Usage" ]
+                    "obj": "java.lang:type=OperatingSystem",
+                    "resultAlias": "os",
+                    "attr": [
+                        "OpenFileDescriptorCount",
+                        "MaxFileDescriptorCount",
+                        "FreePhysicalMemorySize",
+                        "FreeSwapSpaceSize",
+                        "ProcessCpuLoad",
+                        "ProcessCpuTime",
+                        "SystemCpuLoad",
+                        "SystemLoadAverage",
+                        "TotalPhysicalMemorySize",
+                        "TotalSwapSpaceSize"
+                    ]
+                },
+                {
+                    "outputWriters": [
+                        {
+                            "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
+                            "settings": {
+                                "port": %(graphite_port)s,
+                                "host": "%(graphite_host)s",
+                                "rootPrefix" : "%(graphite_prefix)s"
+                            }
+                        }
+                    ],
+                    "obj": "java.lang:type=Runtime",
+                    "resultAlias": "runtime",
+                    "attr": [
+                        "Uptime"
+                    ]
+                },
+                {
+                    "outputWriters": [
+                        {
+                            "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
+                            "settings": {
+                                "port": %(graphite_port)s,
+                                "host": "%(graphite_host)s",
+                                "rootPrefix" : "%(graphite_prefix)s"
+                            }
+                        }
+                    ],
+                    "obj": "java.lang:type=Threading",
+                    "resultAlias": "jvm_threading",
+                    "attr": [
+                        "CurrentThreadCpuTime",
+                        "CurrentThreadUserTime",
+                        "DaemonThreadCount",
+                        "PeakThreadCount",
+                        "ThreadCount",
+                        "TotalStartedThreadCount"
+                    ]
                 },
                 {
                     "outputWriters": [
@@ -65,9 +97,12 @@
                             }
                         }
                     ],
-                    "obj" : "java.lang:type=GarbageCollector,name=*",
+                    "obj": "java.lang:name=*,type=GarbageCollector",
                     "resultAlias": "gc",
-                    "attr" : [ "CollectionCount", "CollectionTime" ]
+                    "attr": [
+                        "CollectionCount",
+                        "CollectionTime"
+                    ]
                 },
                 {
                     "outputWriters": [
@@ -76,28 +111,16 @@
                             "settings": {
                                 "port": %(graphite_port)s,
                                 "host": "%(graphite_host)s",
+                                "typeNames" : [ "name" ],
                                 "rootPrefix" : "%(graphite_prefix)s"
                             }
                         }
                     ],
-                    "obj" : "java.lang:type=MemoryPool,name=*",
-                    "resultAlias": "memorypool",
-                    "attr" : [ "Usage" ]
-                },
-                {
-                    "outputWriters": [
-                        {
-                            "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
-                            "settings": {
-                                "port": %(graphite_port)s,
-                                "host": "%(graphite_host)s",
-                                "rootPrefix" : "%(graphite_prefix)s"
-                            }
-                        }
-                    ],
-                    "obj" : "java.lang:type=Threading",
-                    "resultAlias": "threads",
-                    "attr" : [ "DaemonThreadCount", "PeakThreadCount", "ThreadCount", "TotalStartedThreadCount" ]
+                    "obj": "java.lang:name=*,type=MemoryPool",
+                    "resultAlias": "gc_memory",
+                    "attr": [
+                        "Usage"
+                    ]
                 },
                 {
                     "outputWriters": [
@@ -112,7 +135,7 @@
                     ],
                     "obj" : "Catalina:type=ThreadPool,name=*",
                     "resultAlias": "connectors",
-                    "attr" : [ "currentThreadCount", "currentThreadsBusy", "" ]
+                    "attr" : [ "currentThreadCount", "currentThreadsBusy"]
                 }
             ],
             "numQueryThreads": 3
