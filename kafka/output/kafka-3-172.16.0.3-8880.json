@@ -1,0 +1,70 @@
+{
+    "servers": [
+        {
+            "port": 8880,
+            "host": "172.16.0.3",
+            "queries": [
+                {
+                    "outputWriters": [
+                        {
+                            "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
+                            "settings": {
+                                "port": 2003,
+                                "host": "graphite.myorg.com",
+                                "rootPrefix" : "zookeeperCluster.jmxmetrics"
+                            }
+                        }
+                    ],
+                    "obj": "kafka.cluster:name=UnderReplicated,partition=*,topic=*,type=Partition",
+                    "resultAlias": "UnderReplicatedPartitions",
+                    "attr": [
+                        "Value"
+                    ]
+                },
+                {
+                    "outputWriters": [
+                        {
+                            "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
+                            "settings": {
+                                "port": 2003,
+                                "host": "graphite.myorg.com",
+                                "rootPrefix" : "zookeeperCluster.jmxmetrics"
+                            }
+                        }
+                    ],
+                    "obj": "kafka:type=kafka.LogFlushStats",
+                    "resultAlias": "LogFlushStats",
+                    "attr": [
+                        "FlushesPerSecond",
+                        "MaxFlushMs",
+                        "TotalFlushMs",
+                        "AvgFlushMs",
+                        "NumFlushes"
+                    ]
+                },
+                {
+                    "outputWriters": [
+                        {
+                            "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
+                            "settings": {
+                                "port": 2003,
+                                "host": "graphite.myorg.com",
+                                "rootPrefix" : "zookeeperCluster.jmxmetrics"
+                            }
+                        }
+                    ],
+                    "obj": "kafka.utils:name=cleaner-io,type=Throttler",
+                    "resultAlias": "Throttler",
+                    "attr": [
+                        "Count",
+                        "FifteenMinuteRate",
+                        "FiveMinuteRate",
+                        "MeanRate",
+                        "OneMinuteRate"
+                    ]
+                }
+            ],
+            "numQueryThreads": 3
+        }
+    ]
+}
