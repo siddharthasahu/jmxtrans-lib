@@ -1,18 +1,19 @@
 {
     "servers": [
         {
-            "port": %(port)s,
-            "host": "%(host)s",
+            "port": 9011,
+            "host": "172.16.0.2",
+            "alias": "zookeeper-2",
             "queries": [
                 {
                     "outputWriters": [
                         {
                             "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
                             "settings": {
-                                "port": %(graphite_port)s,
-                                "host": "%(graphite_host)s",
+                                "port": 2003,
+                                "host": "graphite.myorg.com",
                                 "typeNames" : [ "name" ],
-                                "rootPrefix" : "%(graphite_prefix)s"
+                                "rootPrefix" : "zookeeperCluster.jmxmetrics"
                             }
                         }
                     ],
@@ -27,10 +28,10 @@
                         {
                             "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
                             "settings": {
-                                "port": %(graphite_port)s,
-                                "host": "%(graphite_host)s",
+                                "port": 2003,
+                                "host": "graphite.myorg.com",
                                 "typeNames" : [ "name" ],
-                                "rootPrefix" : "%(graphite_prefix)s"
+                                "rootPrefix" : "zookeeperCluster.jmxmetrics"
                             }
                         }
                     ],
@@ -58,10 +59,10 @@
                         {
                             "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
                             "settings": {
-                                "port": %(graphite_port)s,
-                                "host": "%(graphite_host)s",
+                                "port": 2003,
+                                "host": "graphite.myorg.com",
                                 "typeNames" : [ "name" ],
-                                "rootPrefix" : "%(graphite_prefix)s"
+                                "rootPrefix" : "zookeeperCluster.jmxmetrics"
                             }
                         }
                     ],
@@ -77,10 +78,10 @@
                         {
                             "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
                             "settings": {
-                                "port": %(graphite_port)s,
-                                "host": "%(graphite_host)s",
+                                "port": 2003,
+                                "host": "graphite.myorg.com",
                                 "typeNames" : [ "name" ],
-                                "rootPrefix" : "%(graphite_prefix)s"
+                                "rootPrefix" : "zookeeperCluster.jmxmetrics"
                             }
                         }
                     ],
@@ -101,9 +102,9 @@
                         {
                             "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
                             "settings": {
-                                "port": %(graphite_port)s,
-                                "host": "%(graphite_host)s",
-                                "rootPrefix" : "%(graphite_prefix)s"
+                                "port": 2003,
+                                "host": "graphite.myorg.com",
+                                "rootPrefix" : "zookeeperCluster.jmxmetrics"
                             }
                         }
                     ],
@@ -119,9 +120,9 @@
                         {
                             "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
                             "settings": {
-                                "port": %(graphite_port)s,
-                                "host": "%(graphite_host)s",
-                                "rootPrefix" : "%(graphite_prefix)s"
+                                "port": 2003,
+                                "host": "graphite.myorg.com",
+                                "rootPrefix" : "zookeeperCluster.jmxmetrics"
                             }
                         }
                     ],

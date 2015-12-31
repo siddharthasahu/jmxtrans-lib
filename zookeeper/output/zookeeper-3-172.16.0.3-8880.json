@@ -1,8 +1,9 @@
 {
     "servers": [
         {
-            "port": 9011,
-            "host": "zk01.myorg.com",
+            "port": 8880,
+            "host": "172.16.0.3",
+            "alias": "zookeeper-3",
             "queries": [
                 {
                     "outputWriters": [
@@ -17,32 +18,9 @@
                         }
                     ],
                     "obj": "org.apache.ZooKeeperService:name0=ReplicatedServer_id*",
+                    "resultAlias": "Quorum",
                     "attr": [
                         "QuorumSize"
-                    ]
-                },
-                {
-                    "outputWriters": [
-                        {
-                            "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
-                            "settings": {
-                                "port": 2003,
-                                "host": "graphite.myorg.com",
-                                "typeNames" : [ "name" ],
-                                "rootPrefix" : "zookeeperCluster.jmxmetrics"
-                            }
-                        }
-                    ],
-                    "obj": "org.apache.ZooKeeperService:name0=ReplicatedServer_id*",
-                    "attr": [
-                        "ElectionType",
-                        "InitLimit",
-                        "MaxClientCnxnsPerHost",
-                        "MaxSessionTimeout",
-                        "MinSessionTimeout",
-                        "SyncLimit",
-                        "Tick",
-                        "TickTime"
                     ]
                 },
                 {
@@ -89,6 +67,7 @@
                         }
                     ],
                     "obj": "org.apache.ZooKeeperService:name0=ReplicatedServer_id*,name1=replica*,name2=*,name3=InMemoryDataTree",
+                    "resultAlias": "DataTreeBean",
                     "attr": [
                         "NodeCount",
                         "WatchCount"

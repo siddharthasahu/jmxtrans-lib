@@ -2,26 +2,13 @@
 
 import os
 import sys
+from config import *
 
-prod_zk_cluster = ["zk01.myorg.com", "zk02.myorg.com", "zk03.myorg.com"]
+template_data = open('templates/template.json', 'r').read()
 
-zk_template = open('templates/zookeeper.template', 'r').read()
-
-zk_jmx_port="9011"
-
-graphite_host = "graphite.myorg.com"
-graphite_port = "2003"
-graphite_prefix = "zookeeperCluster.jmxmetrics"
-output_dir="output"
-
-def generate_zk(node_array):
-    for host in node_array:
-        generate_host(host, "zookeeper", zk_template)
-
-def generate_host(host, type, template):
-    print "generating template for %(type)s: %(host)s" % { 'host': host, 'type': type }
-    output_file = open("%(output_dir)s/%(host)s-%(type)s.json" % { "output_dir": output_dir, "host": host, "type": type }, "w")
-    output_file.write(template % { "port" : zk_jmx_port , "host" : host, "graphite_host": graphite_host, "graphite_port": graphite_port, "graphite_prefix": graphite_prefix })
+for server in servers:
+    print "generating template for %(host)s:%(port)s" % { 'host': server["host"], 'port': server["port"]}
+    output_file = open("%(output_dir)s/%(server_alias)s-%(host)s-%(port)s.json" % { 'host': server["host"], 'port': server["port"], 'server_alias': server["server_alias"], 'output_dir': output_dir}, "w")
+    server.update(graphite_data)
+    output_file.write(template_data % server)
     output_file.close()
-
-generate_zk(prod_zk_cluster)
