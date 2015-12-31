@@ -12,6 +12,123 @@
                             "settings": {
                                 "port": %(graphite_port)s,
                                 "host": "%(graphite_host)s",
+                                "rootPrefix" : "%(graphite_prefix)s"
+                            }
+                        }
+                    ],
+                    "obj" : "java.lang:type=Memory",
+                    "resultAlias": "heap",
+                    "attr" : [ "HeapMemoryUsage", "NonHeapMemoryUsage" ]
+                },
+                {
+                    "outputWriters": [
+                        {
+                            "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
+                            "settings": {
+                                "port": %(graphite_port)s,
+                                "host": "%(graphite_host)s",
+                                "rootPrefix" : "%(graphite_prefix)s"
+                            }
+                        }
+                    ],
+                    "obj": "java.lang:type=OperatingSystem",
+                    "resultAlias": "os",
+                    "attr": [
+                        "OpenFileDescriptorCount",
+                        "MaxFileDescriptorCount",
+                        "FreePhysicalMemorySize",
+                        "FreeSwapSpaceSize",
+                        "ProcessCpuLoad",
+                        "ProcessCpuTime",
+                        "SystemCpuLoad",
+                        "SystemLoadAverage",
+                        "TotalPhysicalMemorySize",
+                        "TotalSwapSpaceSize"
+                    ]
+                },
+                {
+                    "outputWriters": [
+                        {
+                            "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
+                            "settings": {
+                                "port": %(graphite_port)s,
+                                "host": "%(graphite_host)s",
+                                "rootPrefix" : "%(graphite_prefix)s"
+                            }
+                        }
+                    ],
+                    "obj": "java.lang:type=Runtime",
+                    "resultAlias": "runtime",
+                    "attr": [
+                        "Uptime"
+                    ]
+                },
+                {
+                    "outputWriters": [
+                        {
+                            "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
+                            "settings": {
+                                "port": %(graphite_port)s,
+                                "host": "%(graphite_host)s",
+                                "rootPrefix" : "%(graphite_prefix)s"
+                            }
+                        }
+                    ],
+                    "obj": "java.lang:type=Threading",
+                    "resultAlias": "jvm_threading",
+                    "attr": [
+                        "CurrentThreadCpuTime",
+                        "CurrentThreadUserTime",
+                        "DaemonThreadCount",
+                        "PeakThreadCount",
+                        "ThreadCount",
+                        "TotalStartedThreadCount"
+                    ]
+                },
+                {
+                    "outputWriters": [
+                        {
+                            "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
+                            "settings": {
+                                "port": %(graphite_port)s,
+                                "host": "%(graphite_host)s",
+                                "typeNames" : [ "name" ],
+                                "rootPrefix" : "%(graphite_prefix)s"
+                            }
+                        }
+                    ],
+                    "obj": "java.lang:name=*,type=GarbageCollector",
+                    "resultAlias": "gc",
+                    "attr": [
+                        "CollectionCount",
+                        "CollectionTime"
+                    ]
+                },
+                {
+                    "outputWriters": [
+                        {
+                            "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
+                            "settings": {
+                                "port": %(graphite_port)s,
+                                "host": "%(graphite_host)s",
+                                "typeNames" : [ "name" ],
+                                "rootPrefix" : "%(graphite_prefix)s"
+                            }
+                        }
+                    ],
+                    "obj": "java.lang:name=*,type=MemoryPool",
+                    "resultAlias": "gc_memory",
+                    "attr": [
+                        "Usage"
+                    ]
+                },
+                {
+                    "outputWriters": [
+                        {
+                            "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
+                            "settings": {
+                                "port": %(graphite_port)s,
+                                "host": "%(graphite_host)s",
                                 "typeNames" : [ "name" ],
                                 "rootPrefix" : "%(graphite_prefix)s"
                             }
@@ -95,41 +212,6 @@
                         "OutstandingRequests",
                         "PacketsReceived",
                         "PacketsSent"
-                    ]
-                },
-                {
-                    "outputWriters": [
-                        {
-                            "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
-                            "settings": {
-                                "port": %(graphite_port)s,
-                                "host": "%(graphite_host)s",
-                                "rootPrefix" : "%(graphite_prefix)s"
-                            }
-                        }
-                    ],
-                    "obj": "java.lang:type=Memory",
-                    "resultAlias": "JVM_Memory",
-                    "attr": [
-                        "HeapMemoryUsage",
-                        "NonHeapMemoryUsage"
-                    ]
-                },
-                {
-                    "outputWriters": [
-                        {
-                            "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
-                            "settings": {
-                                "port": %(graphite_port)s,
-                                "host": "%(graphite_host)s",
-                                "rootPrefix" : "%(graphite_prefix)s"
-                            }
-                        }
-                    ],
-                    "obj": "java.lang:type=Threading",
-                    "resultAlias": "JVM_Threading",
-                    "attr": [
-                        "ThreadCount"
                     ]
                 }
             ],
