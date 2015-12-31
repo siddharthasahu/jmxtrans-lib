@@ -6,12 +6,9 @@ I use these when I add a new node to these clusters or a new column family to Ca
 
 These were tested with the following versions:
 
-* Apache Hadoop: 0.20.2
 * Apache Zookeeper: 3.3.4
-* Apache Cassandra: 1.09
-* LinkedIn Kafka: 0.7.2
-* Twitter Storm: 0.7.4
+* Apache Tomcat: 7
 
 Installation
 ============
-There is no installation look at the various ```genjmxtrans.py``` and specify the host names for each cluster.
+There is no installation. Look at the various `genjmxtrans.py` and specify the host details and graphite endpoints in `config.py`.
